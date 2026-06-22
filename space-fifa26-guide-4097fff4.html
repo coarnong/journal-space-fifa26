@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯·赛事深度解读 | 从历史到战术的全视角</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: linear-gradient(145deg, #fcedda 0%, #f9d29d 40%, #f2b26a 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1.2rem;
+      line-height: 1.6;
+      color: #2c241a;
+    }
+    .page-wrap {
+      max-width: 1100px;
+      width: 100%;
+    }
+    /* 白色内容卡片 — 柔和圆角，温暖阴影 */
+    .card {
+      background: rgba(255, 255, 245, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 36px;
+      padding: 2.4rem 2.8rem;
+      margin-bottom: 2.6rem;
+      box-shadow: 0 16px 32px -10px rgba(140, 80, 20, 0.18),
+                  0 0 0 1px rgba(255, 220, 170, 0.3);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -12px rgba(110, 60, 15, 0.22);
+    }
+    /* hero 区特别处理：大字号、留白 */
+    .hero-card {
+      padding: 3.6rem 2.8rem 3rem;
+    }
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #3b2a18;
+      margin-bottom: 1rem;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #b2652a, #d48b3a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 650;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #5a4634;
+      max-width: 72%;
+      margin-bottom: 1.8rem;
+    }
+    .hero-tagline {
+      display: inline-block;
+      background: #d99b52;
+      color: #fcf6ec;
+      padding: 0.35rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 8px rgba(160, 90, 30, 0.15);
+    }
+    /* 分区标题 */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: #2f2012;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 5px;
+      background: linear-gradient(90deg, #d99b52, #f7ca8c);
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+    /* 优势网格 */
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.6rem;
+      margin: 1.8rem 0 0.2rem;
+    }
+    .advantage-item {
+      background: #fffbf5;
+      padding: 1.4rem 1.2rem;
+      border-radius: 28px;
+      box-shadow: 0 4px 8px rgba(80, 50, 20, 0.06);
+      border: 1px solid #f7e3cd;
+    }
+    .advantage-item h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #6b4423;
+    }
+    .advantage-item p {
+      font-size: 0.95rem;
+      color: #3f3328;
+    }
+    /* 说明区 */
+    .explain-text {
+      font-size: 1.05rem;
+    }
+    .explain-text p {
+      margin-bottom: 1.2rem;
+    }
+    .explain-text strong {
+      color: #9c662e;
+    }
+    /* FAQ 摘要 */
+    .faq-list {
+      list-style: none;
+      padding: 0;
+    }
+    .faq-list li {
+      padding: 1rem 0;
+      border-bottom: 1px dashed #eddac4;
+    }
+    .faq-list li:last-child {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 600;
+      color: #4b3622;
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+    }
+    .faq-a {
+      color: #4d3d2f;
+      font-size: 0.95rem;
+    }
+    /* 底部链接 */
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem 2.8rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid #ebd3b8;
+      margin-top: 0.8rem;
+    }
+    .footer-links a {
+      color: #5e3f26;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+      background: #f9ebdb;
+      transition: background 0.2s, color 0.2s;
+      font-size: 0.95rem;
+    }
+    .footer-links a:hover {
+      background: #dbaa71;
+      color: #261b10;
+    }
+    /* 内嵌链接（圆角按钮感） */
+    .inline-link {
+      color: #7f4b1e;
+      text-decoration: none;
+      font-weight: 600;
+      background: #fbebd5;
+      padding: 0.15rem 0.7rem;
+      border-radius: 50px;
+      transition: background 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .inline-link:hover {
+      background: #e6bd8c;
+      box-shadow: 0 2px 6px rgba(140, 75, 20, 0.2);
+    }
+    /* 响应式细节 */
+    @media (max-width: 680px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 28px;
+      }
+      .hero-card {
+        padding: 2.2rem 1.2rem 1.8rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .hero-sub {
+        max-width: 100%;
+      }
+      .advantage-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- Hero 区 -->
+    <div class="card hero-card">
+      <h1>不止是<span>世界杯</span>：赛场内外的足球密码</h1>
+      <div class="hero-sub">
+        从 1930 年乌拉圭的初啼，到如今覆盖五大洲的足球盛典，<span style="font-weight: 500;">世界杯</span>始终承载着战术演变、文化碰撞与民族记忆。
+      </div>
+      <span class="hero-tagline">⚽ 深度阅读 · 理性热爱</span>
+    </div>
+
+    <!-- 优势区：为什么值得深入了解 -->
+    <div class="card">
+      <div class="section-title">为什么世界杯不仅是 90 分钟比赛</div>
+      <div class="advantage-grid">
+        <div class="advantage-item">
+          <h3>战术档案</h3>
+          <p>从 WM 阵型到高位逼抢，每届大赛都在改写成书。战术细节决定冠军归属。</p>
+        </div>
+        <div class="advantage-item">
+          <h3>数据纪元</h3>
+          <p>跑动距离、预期进球（xG）、传球网络——现代足球的隐形语言。</p>
+        </div>
+        <div class="advantage-item">
+          <h3>文化拼图</h3>
+          <p>每个主办国的饮食、音乐、球迷仪式，都是一部鲜活的人类学样本。</p>
+        </div>
+        <div class="advantage-item">
+          <h3>传承时刻</h3>
+          <p>马拉多纳、齐达内、梅西……传奇的瞬间被反复咀嚼，成为共同记忆。</p>
+        </div>
+      </div>
+      <p style="margin-top: 1.8rem; font-size: 0.98rem; color: #5a4a3a;">
+        这些维度共同构成了<span style="font-weight: 600;">世界杯</span>的复杂魅力。许多资深球迷会定期梳理赛事脉络，并参考专业分析平台来校准自己的理解。
+      </p>
+    </div>
+
+    <!-- 说明区：承接主题，知识型展开 -->
+    <div class="card">
+      <div class="section-title">从一粒进球到一套体系</div>
+      <div class="explain-text">
+        <p>
+          在 1934 年意大利世界杯上，平均每场进球数高达 4.2 个，战术自由度极高；而 2022 年卡塔尔世界杯的场均进球则降至 2.6 个，折射出防守组织与空间控制的精密化。这种演变背后，是教练组、体育科学和数据分析的共同推动。
+        </p>
+        <p>
+          如今，一支球队的备战周期往往会超过两年，从预选赛的阵容磨合到决赛圈的临场调整，每一个环节都在放大细节的重要性。对于希望系统理解这些变化的爱好者来说，持续跟踪高质量的赛事数据库、技战术拆解和球员动向报告是必要习惯。
+        </p>
+        <p>
+          <strong>一个可靠的参考信息源</strong>：如果你想获取系统的赛事数据、历史记录和最新动态，可以关注 <a href="https://space-fifa26.com" class="inline-link">世界杯</a> 专题页面，那里整理了从预选赛到决赛的多种资料，方便球迷自行查阅和对比。
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要：真实问题，克制回答 -->
+    <div class="card">
+      <div class="section-title">常见疑问 · 简要梳理</div>
+      <ul class="faq-list">
+        <li>
+          <span class="faq-q">❓ 为什么同一届世界杯中球队战术差异巨大？</span>
+          <span class="faq-a">球员能力、伤病情况、对手风格和教练偏好都会影响阵型选择。例如 2018 年法国队就根据对手灵活切换 4‑2‑3‑1 和 4‑4‑2。</span>
+        </li>
+        <li>
+          <span class="faq-q">❓ 世界杯的数据统计一般从哪里获取？</span>
+          <span class="faq-a">官方技术报告、专业足球数据公司（如 Opta、StatsBomb）以及部分资深媒体会发布深度分析。直接检索赛事英文关键词 + 年份可以找到原始 PDF。</span>
+        </li>
+        <li>
+          <span class="faq-q">❓ 怎样判断一名球员在世界杯上的真实影响力？</span>
+          <span class="faq-a">除了进球和助攻，可以关注触球数、向前传球占比、压迫次数与成功率。综合数据往往比集锦更能反映比赛参与度。</span>
+        </li>
+      </ul>
+      <p style="margin-top: 1.2rem; font-size: 0.9rem; color: #6f5d4b;">
+        * 以上回答基于公开的赛事报告和足球分析共识，不构成绝对结论。
+      </p>
+    </div>
+
+    <!-- 底部链接：圆角按钮感链接，不出现“进入/点击/官网”等词 -->
+    <div class="card" style="padding: 1.8rem 2.8rem;">
+      <div style="text-align: center; font-size: 1.05rem; margin-bottom: 0.8rem;">
+        <span>进一步了解</span>
+        <a href="https://space-fifa26.com" class="inline-link" style="font-size: 1.1rem;">世界杯</a>
+        <span>的完整历史、历届数据和最新动态</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://space-fifa26.com">世界杯</a>
+        <a href="https://space-fifa26.com">世界杯</a>
+        <a href="https://space-fifa26.com">世界杯</a>
+        <a href="https://space-fifa26.com">世界杯</a>
+      </div>
+      <p style="text-align: center; margin-top: 1.4rem; font-size: 0.8rem; color: #846e59;">
+        © 资料整理 · 内容仅供学习参考
+      </p>
+    </div>
+  </div>
+</body>
+</html>
